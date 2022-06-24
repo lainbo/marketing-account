@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import MainView from '@/views/MainView.vue'
+</script>
 
 <template>
   <MainView />

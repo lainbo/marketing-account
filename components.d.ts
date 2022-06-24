@@ -6,8 +6,8 @@ import '@vue/runtime-core'
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AButton: typeof import('@arco-design/web-vue')['Button']
+    AInput: typeof import('@arco-design/web-vue')['Input']
     ATextarea: typeof import('@arco-design/web-vue')['Textarea']
-    MainView: typeof import('./src/components/MainView.vue')['default']
   }
 }
 

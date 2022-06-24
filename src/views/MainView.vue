@@ -11,8 +11,9 @@ function fn() {
       <div class="form_wrapper rounded-10px w-400px">
         <h1>营销号文案生成器</h1>
         <div>
-          <a-textarea
+          <a-input
             v-model="userInput"
+            size="large"
             :max-length="30"
             show-word-limit
             placeholder="输入你的营销主题"
