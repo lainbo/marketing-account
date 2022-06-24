@@ -14,22 +14,24 @@ export default defineConfig({
       eslintrc: {
         enabled: true,
         filepath: './.eslintrc-auto-import.json',
-        globalsPropValue: true,
+        globalsPropValue: true
       },
-      imports: ['vue', '@vueuse/core'],
+      imports: ['vue', '@vueuse/core']
     }),
     Components({
-      resolvers: [ArcoResolver({
-        sideEffect: true,
-      })],
+      resolvers: [
+        ArcoResolver({
+          sideEffect: true
+        })
+      ]
     }),
     chunkSplitPlugin({
       strategy: 'default',
       customSplitting: {
-        'utils': [/src\/utils/],
-        'assets': [/src\/assets/],
-        'component-library': ['@arco-design/web-vue'],
-      },
-    }),
-  ],
+        utils: [/src\/utils/],
+        assets: [/src\/assets/],
+        'component-library': ['@arco-design/web-vue']
+      }
+    })
+  ]
 })
