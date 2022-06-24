@@ -9,7 +9,7 @@ import { chunkSplitPlugin } from 'vite-plugin-chunk-split'
 
 export default defineConfig({
   plugins: [
-    vue({ reactivityTransform: true }),
+    vue(),
     WindiCSS(),
     AutoImport({
       imports: ['vue', 'vue/macros', '@vueuse/core'],

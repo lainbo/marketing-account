@@ -1,15 +1,62 @@
 <script setup lang="ts">
 import { copywritingData } from '@/assets/copywritingData.ts'
-const userInput = $ref('')
+const userInput = ref('')
 const paragraph3Last =
   '大家可能会感到很惊讶，%s为什么是这样的？%s究竟为什么火起来了呢？但事实就是这样，小编也感到非常惊讶。'
-
+// const resultText = ref('')
+const paragraph1 = ref('')
+const paragraph2 = ref('')
+const paragraph3 = ref('')
+const paragraph4 = ref('')
+const last = ref('')
+const title = ref('')
 // 生成文章
+
 function generateArticle() {
-  const title = createTitle().replaceAll('%s', userInput)
-  const paragraph1 = createTitleQ() + createTitleQ() + createTitleQ()
-  const paragraph2 = createParagraph2()
-  console.log('paragraph2: ', paragraph2)
+  title.value = createTitle().replaceAll('%s', userInput.value)
+  paragraph1.value = (
+    createTitleQ() +
+    createTitleQ() +
+    createTitleQ()
+  ).replaceAll('%s', userInput.value)
+  paragraph2.value = (createParagraph2() + createEditorBehavior()).replaceAll(
+    '%s',
+    userInput.value
+  )
+  paragraph3.value = (createParagraph3() + paragraph3Last).replaceAll(
+    '%s',
+    userInput.value
+  )
+  paragraph4.value = createParagraph4().replaceAll('%s', userInput.value)
+  last.value = createLast().replaceAll('%s', userInput.value)
+}
+
+// 创建编辑行为
+function createEditorBehavior(): string {
+  const arr = copywritingData.editorBehavior
+  const behaviorLength = getArrLength(arr)
+  return arr[getRandomIntInclusive(0, behaviorLength - 1)]
+}
+
+// 创建最后一句
+function createLast(): string {
+  const arr = copywritingData.paragraphLast
+  const paragraphLastLength = getArrLength(arr)
+  return arr[getRandomIntInclusive(0, paragraphLastLength - 1)]
+}
+
+// 创建第四段
+function createParagraph4(): string {
+  const arr = copywritingData.paragraph4
+  const paragraph4Length = getArrLength(arr)
+  return arr[getRandomIntInclusive(0, paragraph4Length - 1)]
+}
+
+// 创建第三段
+function createParagraph3(): string {
+  const arr = copywritingData.paragraph3
+  const paragraph3Length = getArrLength(arr)
+  return arr[getRandomIntInclusive(0, paragraph3Length - 1)]
 }
 
 // 创建第二段
@@ -56,9 +103,8 @@ function getArrLength(arr: any[]): number {
 <template>
   <div class="flex h-screen w-screen">
     <div class="left grid-c p-30px flex-1">
-      <div class="card p-24px rounded-10px w-400px">
-        <!-- <h1 class="mb-24px text-40px">营销号文案生成器</h1> -->
-        <h1 class="mb-24px text-40px"></h1>
+      <div class="card p-24px rounded-10px w-full">
+        <h3 class="mb-24px text-24px">营销号文案生成器</h3>
         <div>
           <a-input
             v-model="userInput"
@@ -70,12 +116,23 @@ function getArrLength(arr: any[]): number {
           />
         </div>
         <div class="mt-16px">
-          <a-button long type="primary" @click="generateArticle">生成</a-button>
+          <a-button long type="primary" @click="generateArticle()"
+            >生成</a-button
+          >
         </div>
       </div>
     </div>
     <div class="flex-1 grid-c">
-      <div class="bg-light-500 rounded-10px h-90vh w-11/12"></div>
+      <div class="bg-light-500 rounded-10px h-90vh w-11/12 space-y-16px p-24px">
+        <section class="text-20px font-bold">{{ title }}</section>
+        <div class="text-16px leading-6">
+          <div class="indent-2em">{{ paragraph1 }}</div>
+          <div class="indent-2em">{{ paragraph2 }}</div>
+          <div class="indent-2em">{{ paragraph3 }}</div>
+          <div class="indent-2em">{{ paragraph4 }}</div>
+          <div class="indent-2em">{{ last }}</div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
