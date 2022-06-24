@@ -8,30 +8,26 @@ import { chunkSplitPlugin } from 'vite-plugin-chunk-split'
 
 export default defineConfig({
   plugins: [
-    vue(),
+    vue({ reactivityTransform: true }),
     WindiCSS(),
     AutoImport({
-      eslintrc: {
-        enabled: true,
-        filepath: './.eslintrc-auto-import.json',
-        globalsPropValue: true
-      },
-      imports: ['vue', '@vueuse/core']
+      imports: ['vue', 'vue/macros', '@vueuse/core'],
+      dts: true,
     }),
     Components({
       resolvers: [
         ArcoResolver({
-          sideEffect: true
-        })
-      ]
+          sideEffect: true,
+        }),
+      ],
     }),
     chunkSplitPlugin({
       strategy: 'default',
       customSplitting: {
         utils: [/src\/utils/],
         assets: [/src\/assets/],
-        'component-library': ['@arco-design/web-vue']
-      }
-    })
-  ]
+        'component-library': ['@arco-design/web-vue'],
+      },
+    }),
+  ],
 })

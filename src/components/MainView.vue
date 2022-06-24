@@ -1,23 +1,30 @@
 <script setup lang="ts">
-const props = defineProps({
-  name: {
-    type: String,
-    default: 'World',
-  },
-})
+let userInput = $ref('')
+function fn() {
+  userInput = 'hello'
+}
 </script>
 
 <template>
   <div class="flex h-screen w-screen">
     <div class="left grid-c p-30px flex-1">
       <div class="form_wrapper rounded-10px w-400px">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, sapiente,
-        explicabo voluptatibus libero eaque alias consectetur voluptatem sequi
-        quis provident perspiciatis repellendus necessitatibus illum reiciendis
-        numquam accusantium qui cum illo.
+        <h1>营销号文案生成器</h1>
+        <div>
+          <a-textarea
+            v-model="userInput"
+            :max-length="30"
+            show-word-limit
+            placeholder="输入你的营销主题"
+            allow-clear
+          />
+        </div>
       </div>
     </div>
-    <div class="flex-1">123</div>
+    <div class="flex-1">
+      <a-button @click="fn"> 测试按钮</a-button>
+      {{ userInput }}
+    </div>
   </div>
 </template>
 

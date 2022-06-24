@@ -1,11 +1,7 @@
 module.exports = {
   root: true,
   plugins: ['prettier'],
-  extends: [
-    '@antfu',
-    './.eslintrc-auto-import.json',
-    'plugin:prettier/recommended',
-  ],
+  extends: ['@antfu', 'plugin:prettier/recommended'],
   rules: {
     'prettier/prettier': [
       'warn',
