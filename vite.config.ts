@@ -8,6 +8,7 @@ import { ArcoResolver } from 'unplugin-vue-components/resolvers'
 import { chunkSplitPlugin } from 'vite-plugin-chunk-split'
 
 export default defineConfig({
+  base: './',
   plugins: [
     vue(),
     WindiCSS(),

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { IconCopy } from '@arco-design/web-vue/es/icon'
 import { Message } from '@arco-design/web-vue'
-import copywritingData from '@/assets/copywritingData.json'
+import copywritingData from '../assets/copywritingData'
 const { copy } = useClipboard() // 复制结果功能
 const userInput = ref('不能生吞玻璃')
 const paragraph3Last =
@@ -87,13 +87,13 @@ function getArrLength(arr: any[]): number {
 
 // 复制结果
 function copyResult() {
-  const result =
-    title.value +
-    paragraph1.value +
-    paragraph2.value +
-    paragraph3.value +
-    paragraph4.value +
-    last.value
+  const result = `${title.value}
+${paragraph1.value}
+${paragraph2.value}
+${paragraph3.value}
+${paragraph4.value}
+${last.value}`
+
   copy(result)
   Message.success('复制成功')
 }

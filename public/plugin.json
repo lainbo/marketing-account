@@ -1,0 +1,19 @@
+{
+  "pluginName": "营销号文案生成器",
+  "description": "一键随机生成“小编体”的垃圾话文案",
+  "main": "index.html",
+  "version": "0.0.1",
+  "author": "Lainbo",
+  "logo": "logo.png",
+  "features": [
+    {
+      "code": "marketing",
+      "explain": "随机生成“小编体”的垃圾话文案",
+      "cmds": [
+        "小编",
+        "营销号文案"
+      ]
+    }
+  ],
+  "name": "zqruwxww"
+}
