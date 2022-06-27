@@ -1,5 +1,5 @@
 interface data {
-  [key: string]: string[]
+  [key: string]: Array<string>
 }
 const copywritingData: data = {
   titleQ: [
