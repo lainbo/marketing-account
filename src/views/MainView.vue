@@ -6,18 +6,18 @@ const { copy } = useClipboard() // 复制结果功能
 const userInput = ref('不能生吞玻璃')
 const paragraph3Last =
   '大家可能会感到很惊讶，%s为什么是这样的？%s究竟为什么火起来了呢？但事实就是这样，小编也感到非常惊讶。'
-const paragraph1 = ref('')
-const paragraph2 = ref('')
-const paragraph3 = ref('')
-const paragraph4 = ref('')
-const last = ref('')
-const title = ref('')
+const paragraph1 = ref<string>('')
+const paragraph2 = ref<string>('')
+const paragraph3 = ref<string>('')
+const paragraph4 = ref<string>('')
+const last = ref<string>('')
+const title = ref<string>('')
 
 // 生成文章
 function generateArticle() {
   title.value = replaceStr(createTitle()) // 标题
   paragraph1.value = replaceStr(
-    createTitleQ() + createTitleQ() + createTitleQ()
+    [...new Set([createTitleQ(), createTitleQ(), createTitleQ()])].join('')
   ) // 第一段
   paragraph2.value = replaceStr(createParagraph(2) + createEditorBehavior()) // 第二段
   paragraph3.value = replaceStr(createParagraph(3) + paragraph3Last) // 第三段
@@ -133,21 +133,15 @@ onMounted(() => {
         </div>
       </div>
     </div>
-    <div class="flex-1 grid-c">
-      <div
-        class="text_wrapper bg-light-400 rounded-8px h-90vh w-11/12 flex flex-col"
-      >
-        <section class="text-20px font-bold leading-8 p-16px pb-0">
-          {{ title }}
-        </section>
-        <div
-          class="text-16px leading-6 overflow-auto flex-1 p-16px pt-0 mt-16px"
-        >
-          <div class="indent-2em">{{ paragraph1 }}</div>
-          <div class="indent-2em">{{ paragraph2 }}</div>
-          <div class="indent-2em">{{ paragraph3 }}</div>
-          <div class="indent-2em">{{ paragraph4 }}{{ last }}</div>
-        </div>
+    <div class="flex-1 flex-col overflow-auto text_wrapper">
+      <section class="text-20px font-bold leading-8 p-16px pb-0">
+        {{ title }}
+      </section>
+      <div class="text-16px leading-6 flex-1 p-16px pt-0 mt-16px">
+        <div class="indent-2em">{{ paragraph1 }}</div>
+        <div class="indent-2em">{{ paragraph2 }}</div>
+        <div class="indent-2em">{{ paragraph3 }}</div>
+        <div class="indent-2em">{{ paragraph4 }}{{ last }}</div>
       </div>
     </div>
   </div>
@@ -190,6 +184,6 @@ $color-shadow: #babecc;
   box-shadow: 20px 20px 60px #c8c9cc, -20px -20px 60px #ffffff;
 }
 .text_wrapper {
-  border: 1px solid #e5e6eb;
+  border-left: 2px solid #ffffff9a;
 }
 </style>
