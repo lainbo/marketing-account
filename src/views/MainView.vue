@@ -137,7 +137,7 @@ onMounted(() => {
       <section class="text-20px font-bold leading-8 p-16px pb-0">
         {{ title }}
       </section>
-      <div class="text-16px leading-6 flex-1 p-16px pt-0 mt-16px">
+      <div class="text-16px leading-7 flex-1 p-16px pt-0 mt-16px">
         <div class="indent-2em">{{ paragraph1 }}</div>
         <div class="indent-2em">{{ paragraph2 }}</div>
         <div class="indent-2em">{{ paragraph3 }}</div>
@@ -184,6 +184,6 @@ $color-shadow: #babecc;
   box-shadow: 20px 20px 60px #c8c9cc, -20px -20px 60px #ffffff;
 }
 .text_wrapper {
-  border-left: 2px solid #ffffff9a;
+  border-left: 1px solid #ffffff9a;
 }
 </style>
