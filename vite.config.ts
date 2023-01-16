@@ -5,7 +5,6 @@ import vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { ArcoResolver } from 'unplugin-vue-components/resolvers'
-import { chunkSplitPlugin } from 'vite-plugin-chunk-split'
 
 export default defineConfig({
   base: './',
@@ -22,14 +21,6 @@ export default defineConfig({
           sideEffect: true,
         }),
       ],
-    }),
-    chunkSplitPlugin({
-      strategy: 'default',
-      customSplitting: {
-        utils: [/src\/utils/],
-        assets: [/src\/assets/],
-        'component-library': ['@arco-design/web-vue'],
-      },
     }),
   ],
   resolve: {

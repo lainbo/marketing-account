@@ -4,8 +4,14 @@
   src: url('https://efadmin.netlify.app/font/HarmonyOS_Sans_Regular.woff2') format('woff2');
 }
 
+
 html,
 body {
   font-family: 'HarmonyOS Sans SC', 'HarmonyOS', system-ui,
     —apple-system, Segoe UI, Rototo, Helvetica, Arial, sans-serif !important;
+}
+
+.arco-message {
+  border-radius: 8px !important;
+  box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc !important;
 }
