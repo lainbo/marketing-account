@@ -1,13 +1,8 @@
-@font-face {
-  font-display: swap;
-  font-family: 'HarmonyOS';
-  src: url('https://efadmin.netlify.app/font/HarmonyOS_Sans_Regular.woff2') format('woff2');
-}
-
+@use './HarmonyOS_Font.scss';
 
 html,
 body {
-  font-family: 'HarmonyOS Sans SC', 'HarmonyOS', system-ui,
+  font-family: 'HarmonyOS Sans SC', 'HarmonyOS_Regular', system-ui,
     —apple-system, Segoe UI, Rototo, Helvetica, Arial, sans-serif !important;
 }
 
