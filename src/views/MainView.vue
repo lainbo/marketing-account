@@ -113,7 +113,7 @@ onMounted(() => {
           class="input"
           type="text"
           placeholder="输入你的营销主题"
-          maxlength="15"
+          maxlength="20"
         />
         <div class="flex space-x-16px w-full">
           <button
@@ -128,7 +128,7 @@ onMounted(() => {
             type="button"
             @click="copyResult"
           >
-            <icon-copy style="color: #61677c" />
+            <IconCopy style="color: #61677c" />
           </button>
         </div>
       </div>
